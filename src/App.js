@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Contact from "./Contact";
 import "./App.css";
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
   }
   render() {
     const { contacts } = this.state;
-    console.log(this.state.contacts);
+    console.log(contacts);
 
     return (
       <div className="contactlist">
@@ -28,12 +29,13 @@ class App extends Component {
           </thead>
           <tbody>
             {contacts.map(contact => (
-              <tr key={contact.id}>
-                <td>{contact.name}</td>
-                <td>{contact.surname}</td>
-                <td>{contact.phone}</td>
-                <td><button>Toggle favorite</button></td>
-              </tr>
+              <Contact
+                key={contact.id}
+                name={contact.name}
+                surname={contact.surname}
+                phone={contact.phone}
+                isFavorite={contact.isFavorite}
+              />
             ))}
           </tbody>
         </table>
