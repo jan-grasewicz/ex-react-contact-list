@@ -7,6 +7,19 @@ class App extends Component {
     contacts: []
   };
 
+  addContact = (name,surname,phone) => {
+    this.setState({
+      contacts: this.state.contacts.concat({
+        id: Date.now(),
+        name:name,
+        surname:surname,
+        phone:phone,
+        isFavorite: false,
+      }),
+    });
+  };
+
+
   componentDidMount() {
     fetch(process.env.PUBLIC_URL + "/data/contactlist.json")
       .then(response => response.json())

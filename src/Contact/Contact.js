@@ -5,6 +5,11 @@ class Contact extends Component {
     state={
         favorite: this.props.isFavorite,
     }
+
+    onToggleFavorite=()=>{
+      this.setState({favorite:!this.state.favorite})
+    }
+
   render() {
     const {name,surname,phone} = this.props
  
@@ -15,7 +20,7 @@ class Contact extends Component {
         <td>{surname}</td>
         <td>{phone}</td>
         <td>
-          <button>Toggle favorite</button>
+          <button onClick={this.onToggleFavorite}>Toggle favorite</button>
         </td>
       </tr>
     );
