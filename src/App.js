@@ -19,9 +19,10 @@ class App extends Component {
       })
     });
   };
-
-  handleClick = event => {
-    console.log(event);
+  removeContact = contactId => {
+    this.setState({
+      contacts: this.state.contacts.filter(contact => contact.id !== contactId)
+    });
   };
 
   componentDidMount() {
@@ -53,6 +54,7 @@ class App extends Component {
                 surname={contact.surname}
                 phone={contact.phone}
                 isFavorite={contact.isFavorite}
+                onRemove={()=>this.removeContact(contact.id)}
               />
             ))}
           </tbody>
