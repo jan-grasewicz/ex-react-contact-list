@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Contact from "./Contact";
+import AddContactForm from "./AddContactForm";
 import "./App.css";
 
 class App extends Component {
@@ -7,18 +8,21 @@ class App extends Component {
     contacts: []
   };
 
-  addContact = (name,surname,phone) => {
+  addContact = (name, surname, phone) => {
     this.setState({
       contacts: this.state.contacts.concat({
         id: Date.now(),
-        name:name,
-        surname:surname,
-        phone:phone,
-        isFavorite: false,
-      }),
+        name: name,
+        surname: surname,
+        phone: phone,
+        isFavorite: false
+      })
     });
   };
 
+  handleClick = event => {
+    console.log(event);
+  };
 
   componentDidMount() {
     fetch(process.env.PUBLIC_URL + "/data/contactlist.json")
@@ -32,6 +36,7 @@ class App extends Component {
     return (
       <div className="contactlist">
         <h1>Contact List</h1>
+        <AddContactForm handleAddContact={this.addContact} />
         <table>
           <thead>
             <tr>
